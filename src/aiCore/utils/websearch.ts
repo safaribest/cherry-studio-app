@@ -3,7 +3,7 @@ import type {
   OpenAISearchConfig,
   WebSearchPluginConfig
 } from '@cherrystudio/ai-core/built-in/plugins'
-import type { BaseProviderId } from '@cherrystudio/ai-core/provider'
+import type { ProviderId } from '@cherrystudio/ai-core/provider'
 
 import { isOpenAIDeepResearchModel, isOpenAIWebSearchChatCompletionOnlyModel } from '@/config/models'
 import type { Model } from '@/types/assistant'
@@ -42,11 +42,11 @@ function mapMaxResultToOpenAIContextSize(maxResults: number): OpenAISearchConfig
 }
 
 export function buildProviderBuiltinWebSearchConfig(
-  providerId: BaseProviderId,
+  providerId: ProviderId,
   webSearchConfig: CherryWebSearchConfig,
   model?: Model
 ): WebSearchPluginConfig | undefined {
-  switch (providerId) {
+  switch (providerId as string) {
     case 'openai': {
       const searchContextSize = isOpenAIDeepResearchModel(model)
         ? 'medium'
@@ -107,7 +107,8 @@ export function buildProviderBuiltinWebSearchConfig(
         }
       }
     }
-    case 'cherryin': {
+    case 'cherryin':
+    case 'opencode-go': {
       const _providerId =
         { 'openai-response': 'openai', openai: 'openai-chat' }[model?.endpoint_type ?? ''] ?? model?.endpoint_type
       return buildProviderBuiltinWebSearchConfig(_providerId, webSearchConfig, model)

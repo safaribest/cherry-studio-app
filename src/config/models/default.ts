@@ -14,16 +14,30 @@ export const qwen38bModel: Model = {
   group: 'Qwen'
 }
 
+const defaultAssistantModel: Model = {
+  id: 'deepseek-ai/DeepSeek-V3',
+  name: 'DeepSeek-V3',
+  provider: 'silicon',
+  group: 'deepseek-ai'
+}
+
+const defaultTopicNamingModel: Model = {
+  id: 'Qwen/Qwen3-8B',
+  name: 'Qwen3-8B',
+  provider: 'silicon',
+  group: 'Qwen'
+}
+
 export const SYSTEM_MODELS: Record<SystemProviderId | 'defaultModel', Model[]> = {
   defaultModel: [
     // Default assistant model
-    glm45FlashModel,
+    defaultAssistantModel,
     // Default topic naming model
-    qwen38bModel,
+    defaultTopicNamingModel,
     // Default translation model
-    glm45FlashModel,
+    defaultAssistantModel,
     // Default quick assistant model
-    glm45FlashModel
+    defaultAssistantModel
   ],
   cherryin: [],
   vertexai: [],
@@ -1854,6 +1868,104 @@ export const SYSTEM_MODELS: Record<SystemProviderId | 'defaultModel', Model[]> =
   ],
   huggingface: [],
   'ai-gateway': [],
+  'opencode-go': [
+    {
+      id: 'glm-5.1',
+      name: 'GLM-5.1',
+      provider: 'opencode-go',
+      group: 'GLM',
+      pricing: { input_per_million_tokens: 1.4, output_per_million_tokens: 4.4, currencySymbol: 'USD' }
+    },
+    {
+      id: 'glm-5',
+      name: 'GLM-5',
+      provider: 'opencode-go',
+      group: 'GLM',
+      pricing: { input_per_million_tokens: 1.0, output_per_million_tokens: 3.2, currencySymbol: 'USD' }
+    },
+    {
+      id: 'kimi-k2.5',
+      name: 'Kimi K2.5',
+      provider: 'opencode-go',
+      group: 'Kimi',
+      pricing: { input_per_million_tokens: 0.6, output_per_million_tokens: 3.0, currencySymbol: 'USD' }
+    },
+    {
+      id: 'kimi-k2.6',
+      name: 'Kimi K2.6',
+      provider: 'opencode-go',
+      group: 'Kimi',
+      pricing: { input_per_million_tokens: 0.95, output_per_million_tokens: 4.0, currencySymbol: 'USD' }
+    },
+    {
+      id: 'deepseek-v4-pro',
+      name: 'DeepSeek V4 Pro',
+      provider: 'opencode-go',
+      group: 'DeepSeek',
+      pricing: { input_per_million_tokens: 1.74, output_per_million_tokens: 3.48, currencySymbol: 'USD' }
+    },
+    {
+      id: 'deepseek-v4-flash',
+      name: 'DeepSeek V4 Flash',
+      provider: 'opencode-go',
+      group: 'DeepSeek',
+      pricing: { input_per_million_tokens: 0.14, output_per_million_tokens: 0.28, currencySymbol: 'USD' }
+    },
+    {
+      id: 'mimo-v2.5',
+      name: 'MiMo-V2.5',
+      provider: 'opencode-go',
+      group: 'MiMo',
+      pricing: { input_per_million_tokens: 0.14, output_per_million_tokens: 0.28, currencySymbol: 'USD' }
+    },
+    {
+      id: 'mimo-v2.5-pro',
+      name: 'MiMo-V2.5-Pro',
+      provider: 'opencode-go',
+      group: 'MiMo',
+      pricing: { input_per_million_tokens: 1.74, output_per_million_tokens: 3.48, currencySymbol: 'USD' }
+    },
+    {
+      id: 'minimax-m3',
+      name: 'MiniMax M3',
+      provider: 'opencode-go',
+      group: 'MiniMax',
+      endpoint_type: 'anthropic',
+      pricing: { input_per_million_tokens: 0.6, output_per_million_tokens: 2.4, currencySymbol: 'USD' }
+    },
+    {
+      id: 'minimax-m2.7',
+      name: 'MiniMax M2.7',
+      provider: 'opencode-go',
+      group: 'MiniMax',
+      endpoint_type: 'anthropic',
+      pricing: { input_per_million_tokens: 0.3, output_per_million_tokens: 1.2, currencySymbol: 'USD' }
+    },
+    {
+      id: 'minimax-m2.5',
+      name: 'MiniMax M2.5',
+      provider: 'opencode-go',
+      group: 'MiniMax',
+      endpoint_type: 'anthropic',
+      pricing: { input_per_million_tokens: 0.3, output_per_million_tokens: 1.2, currencySymbol: 'USD' }
+    },
+    {
+      id: 'qwen3.7-max',
+      name: 'Qwen3.7 Max',
+      provider: 'opencode-go',
+      group: 'Qwen',
+      endpoint_type: 'anthropic',
+      pricing: { input_per_million_tokens: 2.5, output_per_million_tokens: 7.5, currencySymbol: 'USD' }
+    },
+    {
+      id: 'qwen3.6-plus',
+      name: 'Qwen3.6 Plus',
+      provider: 'opencode-go',
+      group: 'Qwen',
+      endpoint_type: 'anthropic',
+      pricing: { input_per_million_tokens: 0.5, output_per_million_tokens: 3.0, currencySymbol: 'USD' }
+    }
+  ],
   cerebras: [
     {
       id: 'gpt-oss-120b',

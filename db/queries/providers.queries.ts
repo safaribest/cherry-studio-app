@@ -112,3 +112,24 @@ export function getProviderByIdSync(providerId: string): Provider | undefined {
     throw error
   }
 }
+
+/**
+ * 获取所有提供商配置（同步）
+ * @description 同步方式查询所有提供商
+ * @returns 返回所有提供商的数组，如果没有则返回空数组
+ * @throws 当查询操作失败时抛出错误
+ */
+export function getAllProvidersSync(): Provider[] {
+  try {
+    const result = db.select().from(providers).all()
+
+    if (result.length === 0) {
+      return []
+    }
+
+    return result.map(transformDbToProvider)
+  } catch (error) {
+    logger.error('Error in getAllProvidersSync:', error)
+    throw error
+  }
+}

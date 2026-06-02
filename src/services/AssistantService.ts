@@ -25,7 +25,7 @@
  * ```
  */
 
-import { assistantDatabase } from '@database'
+import { assistantDatabase , providerDatabase } from '@database'
 
 import { getBuiltInAssistants } from '@/config/assistants'
 import { SYSTEM_MODELS } from '@/config/models/default'
@@ -811,8 +811,18 @@ export async function getDefaultAssistant(): Promise<Assistant> {
 
 /**
  * Get default model
+ * Returns the first model from the first enabled system provider, falling back to hardcoded default
  */
 export function getDefaultModel() {
+  try {
+    const allProviders = providerDatabase.getAllProvidersSync()
+    const enabledProviders = allProviders.filter(p => p.enabled && p.models.length > 0)
+    if (enabledProviders.length > 0) {
+      return enabledProviders[0].models[0]
+    }
+  } catch {
+    // fall through to hardcoded default
+  }
   return SYSTEM_MODELS.defaultModel[0]
 }
 

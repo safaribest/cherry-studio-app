@@ -629,6 +629,17 @@ export const SYSTEM_PROVIDERS_CONFIG: Record<SystemProviderId, SystemProvider> =
     models: SYSTEM_MODELS.cerebras,
     isSystem: true,
     enabled: false
+  },
+  'opencode-go': {
+    id: 'opencode-go',
+    name: 'OpenCode Go',
+    type: 'openai',
+    apiKey: '',
+    apiHost: 'https://opencode.ai/zen/go/v1/',
+    anthropicApiHost: 'https://opencode.ai/zen/go/v1/',
+    models: SYSTEM_MODELS['opencode-go'],
+    isSystem: true,
+    enabled: false
   }
 } as const
 
@@ -1298,6 +1309,17 @@ export const PROVIDER_URLS: Record<SystemProviderId, ProviderUrls> = {
       docs: 'https://inference-docs.cerebras.ai/introduction',
       models: 'https://inference-docs.cerebras.ai/models/overview'
     }
+  },
+  'opencode-go': {
+    api: {
+      url: 'https://opencode.ai/zen/go/v1/'
+    },
+    websites: {
+      official: 'https://opencode.ai/go',
+      apiKey: 'https://opencode.ai/auth',
+      docs: 'https://opencode.ai/docs/go/',
+      models: 'https://opencode.ai/go'
+    }
   }
 }
 
@@ -1360,7 +1382,12 @@ export const isSupportEnableThinkingProvider = (provider: Provider) => {
   )
 }
 
-const NOT_SUPPORT_SERVICE_TIER_PROVIDERS = ['github', 'copilot', 'cerebras'] as const satisfies SystemProviderId[]
+const NOT_SUPPORT_SERVICE_TIER_PROVIDERS = [
+  'github',
+  'copilot',
+  'cerebras',
+  'opencode-go'
+] as const satisfies SystemProviderId[]
 
 /**
  * 判断提供商是否支持 service_tier 设置。 Only for OpenAI API.
@@ -1394,7 +1421,7 @@ export const isGeminiWebSearchProvider = (provider: Provider) => {
 }
 
 export const isNewApiProvider = (provider: Provider) => {
-  return ['new-api', 'cherryin'].includes(provider.id) || provider.type === 'new-api'
+  return ['new-api', 'cherryin', 'opencode-go'].includes(provider.id) || provider.type === 'new-api'
 }
 
 export function isCherryAIProvider(provider: Provider): boolean {

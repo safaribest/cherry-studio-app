@@ -160,6 +160,7 @@ const PROVIDER_ICONS_DARK: Record<SystemProviderId | 'default' | 'cherryai', Ima
   huggingface: require('@/assets/images/llmIcons/dark/huggingface.png'),
   'ai-gateway': require('@/assets/images/llmIcons/dark/vercel.png'),
   cerebras: require('@/assets/images/llmIcons/dark/cerebras.png'),
+  'opencode-go': require('@/assets/images/llmIcons/dark/openai.png'),
   default: require('@/assets/images/llmIcons/dark/openai.png')
 }
 
@@ -225,6 +226,7 @@ const PROVIDER_ICONS_LIGHT: Record<SystemProviderId | 'default' | 'cherryai', Im
   huggingface: require('@/assets/images/llmIcons/dark/huggingface.png'),
   'ai-gateway': require('@/assets/images/llmIcons/dark/vercel.png'),
   cerebras: require('@/assets/images/llmIcons/dark/cerebras.png'),
+  'opencode-go': require('@/assets/images/llmIcons/dark/openai.png'),
   default: require('@/assets/images/llmIcons/dark/openai.png')
 }
 

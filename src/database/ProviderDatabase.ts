@@ -1,6 +1,7 @@
 import {
   deleteProvider as _deleteProvider,
   getAllProviders as _getAllProviders,
+  getAllProvidersSync as _getAllProvidersSync,
   getProviderById as _getProviderById,
   getProviderByIdSync as _getProviderByIdSync,
   upsertProviders as _upsertProviders
@@ -24,6 +25,10 @@ export async function getAllProviders() {
   return _getAllProviders()
 }
 
+export function getAllProvidersSync(): Provider[] {
+  return _getAllProvidersSync()
+}
+
 export function getProviderByIdSync(providerId: string) {
   return _getProviderByIdSync(providerId)
 }
@@ -33,5 +38,6 @@ export const providerDatabase = {
   deleteProvider,
   getProviderById,
   getAllProviders,
+  getAllProvidersSync,
   getProviderByIdSync
 }

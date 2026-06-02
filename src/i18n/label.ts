@@ -63,6 +63,7 @@ const providerKeyMap = {
   ocoolai: 'provider.ocoolai',
   ollama: 'provider.ollama',
   openai: 'provider.openai',
+  'opencode-go': 'provider.opencode-go',
   openrouter: 'provider.openrouter',
   perplexity: 'provider.perplexity',
   ph8: 'provider.ph8',

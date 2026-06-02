@@ -203,6 +203,12 @@ export function providerToAiSdkConfig(
     }
   }
 
+  if (aiSdkProviderId === 'opencode-go') {
+    if (model.endpoint_type) {
+      extraOptions.endpointType = model.endpoint_type
+    }
+  }
+
   // 如果AI SDK支持该provider，使用原生配置
   if (hasProviderConfig(aiSdkProviderId) && aiSdkProviderId !== 'openai-compatible') {
     const options = ProviderConfigFactory.fromProvider(aiSdkProviderId, baseConfig, extraOptions)

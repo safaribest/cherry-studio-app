@@ -136,6 +136,9 @@ export function buildProviderOptions(
         case 'huggingface':
           providerSpecificOptions = buildOpenAIProviderOptions(assistant, model, capabilities)
           break
+        case 'opencode-go':
+          providerSpecificOptions = buildCherryInProviderOptions(assistant, model, capabilities, actualProvider)
+          break
         default:
           // 对于其他 provider，使用通用的构建逻辑
           providerSpecificOptions = {
@@ -162,6 +165,10 @@ export function buildProviderOptions(
     }[rawProviderId] || rawProviderId
 
   if (rawProviderKey === 'cherryin') {
+    rawProviderKey = { gemini: 'google' }[actualProvider.type] || actualProvider.type
+  }
+
+  if (rawProviderKey === 'opencode-go') {
     rawProviderKey = { gemini: 'google' }[actualProvider.type] || actualProvider.type
   }
 

@@ -87,6 +87,14 @@ export const NEW_PROVIDER_CONFIGS: ProviderConfig[] = [
     import: () => import('@ai-sdk/cerebras'),
     creatorFunctionName: 'createCerebras',
     supportsImageGeneration: false
+  },
+  {
+    id: 'opencode-go',
+    name: 'OpenCode Go',
+    import: () => import('@ai-sdk/openai-compatible'),
+    creatorFunctionName: 'createOpenAICompatible',
+    supportsImageGeneration: false,
+    aliases: ['opencode-go']
   }
 ] as const
 
